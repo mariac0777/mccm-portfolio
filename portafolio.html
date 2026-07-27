@@ -1,0 +1,3364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCCM — Virtual Assistant | María Claudia Collante Méndez</title>
+<link href="https://fonts.cdnfonts.com/css/brittany-signature" rel="stylesheet"><style>
+  :root {
+    --wood: #5B4034;          /* Marrón café colonial */
+    --linen: #E8DCC8;         /* Arena cálida */
+    --clay: #7a6458;          /* Taupe cálido */
+    --purple-brown: #a5705c;  /* Borgoña profundo */
+    --port:#411e28;          /* Ciruela oscura */
+    --burgundy: #6B2E2E;       /* Vino tinto intenso */
+    --chocolate: #2c0e19;       /* Chocolate oscuro */
+    --linen-light: #F4EEE4;   /* Crema suave */
+    --linen-dark: #C9A15F;    /* Dorado viejo */
+    --redwine: #490b0b; /* Terracota vibrante */
+
+    --shadow-warm: rgba(74,34,48,0.12);
+    --shadow-deep: rgba(50,27,40,0.22);
+}
+ 
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  html { scroll-behavior: smooth; font-size: 16px; }
+ 
+  body {
+    background: var(--linen);
+    color: var(--wood);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+ html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--linen-light); }
+  ::-webkit-scrollbar-thumb { background: var(--clay); border-radius: 3px; }
+ 
+  /* ─── NAV ─── */
+  nav {
+    color: var(--wood);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding:1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.4s ease; 
+    backdrop-filter: blur(14px);
+   -webkit-backdrop-filter: blur(14px);
+   background: rgba(20, 15, 15, 0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  box-sizing:border-box;
+  }
+  .nav-logo {
+  color: var(--wood);
+}
+
+.nav-links a {
+  color: var(--wood);
+}
+nav.scrolled {
+  background: rgba(20, 15, 15, 0.28);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.15);
+}
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem; font-weight: 600; letter-spacing: 0.18em;
+    color: var(--linen); text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-logo { color: var(--wood); }
+  /* NAV LIGHT MODE FOR DARK SECTIONS */
+
+nav.light-nav .nav-logo {
+  color: var(--linen);
+}
+
+nav.light-nav .nav-links a {
+  color: var(--linen);
+}
+
+nav.light-nav .hamburger span {
+  background: var(--linen);
+}
+
+nav.light-nav {
+  background: rgba(50, 27, 40, 0.35);
+  backdrop-filter: blur(12px);
+}
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--linen); /* COLOR CLARO POR DEFECTO */
+  transition: color 0.3s ease;
+}
+
+/* CUANDO EL FONDO ES CLARO */
+nav.light-section .nav-links a,
+nav.light-section .nav-logo {
+  color: var(--wood);
+}
+
+/* CUANDO EL FONDO ES OSCURO */
+nav.dark-section .nav-links a,
+nav.dark-section .nav-logo {
+  color: var(--linen);
+}
+  .nav-links a:hover { color: var(--clay); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--linen); transition: all 0.3s; display: block; }
+  nav.scrolled .hamburger span { background: var(--wood); }
+
+  /* ========================================= */
+/* RESPONSIVE NAVBAR */
+/* ========================================= */
+
+@media (max-width:992px){
+
+nav{
+
+padding:1rem 2rem;
+
+}
+
+}
+
+@media (max-width:768px){
+
+.nav-links{
+
+display:none;
+
+}
+
+.hamburger{
+
+display:flex;
+
+}
+
+nav{
+
+padding:1rem 1.5rem;
+
+}
+
+}
+
+@media (max-width:768px){
+
+.nav-logo{
+
+font-size:1.45rem;
+
+letter-spacing:.14em;
+
+}
+
+}
+
+@media (max-width:768px){
+
+.hamburger span{
+
+width:28px;
+
+height:2px;
+
+}
+
+}
+ 
+  /* ─── HERO ─── */
+  /* ===== HERO ===== */
+
+#hero{
+  position: relative;
+
+  height: 100svh;
+min-height:700px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  padding-left: 8%;
+}
+
+/* FOTO */
+
+.hero-bg{
+  position: absolute;
+
+  inset: 0;
+
+  background-image: url("bgfancy.png");
+  
+  background-size: cover;
+
+  background-position: center;
+
+  z-index: 1;
+ 
+}
+
+/* CAPA SUAVE SOLO PARA LEGIBILIDAD */
+
+.hero-bg::after{
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+  linear-gradient(
+    to right,
+    rgba(0,0,0,0.32),
+    rgba(0,0,0,0.08),
+    rgba(0,0,0,0.12)
+  );
+
+  z-index: 2;
+}
+
+/* CONTENIDO */
+
+.hero-content{
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 600px;
+}
+
+/* MINI TEXT */
+
+.hero-mini{
+  font-size: 0.72rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.35em;
+
+  color: rgba(255,255,255,0.78);
+
+  margin-bottom: 1.5rem;
+}
+
+/* MCCM */
+.hero-title-main{
+font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 13vw, 10rem);
+
+  color: white;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.03em;
+
+  margin-bottom: 1rem;
+
+  text-shadow:
+  0 8px 30px rgba(0,0,0,0.18);
+
+  font-size: clamp(5rem, 12vw, 10rem);
+
+  line-height: 0.9;
+
+  color: white;
+
+  font-weight: 500;
+
+  margin-bottom: 1rem;
+
+  letter-spacing: 0.08em;
+
+  text-shadow:
+  0 10px 35px rgba(0,0,0,0.18);
+}
+
+/* SUBTEXT */
+
+.hero-sub{
+  max-width: 470px;
+  
+  font-family: 'Playfair Display', serif;
+
+ font-size: clamp(1rem, 2vw, 1.2rem);
+  font-style: italic;
+  line-height: 1.9;
+
+  color: rgba(255,255,255,0.88);
+
+  margin-bottom: 1.5rem;
+}
+
+
+/* BUTTON */
+
+.btn-primary{
+  display: inline-block;
+
+  padding: 1rem 2.4rem;
+
+  border: 1px solid rgba(255,255,255,0.5);
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 0.72rem;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  backdrop-filter: blur(8px);
+
+  transition: all 0.4s ease;
+
+  background: rgba(255,255,255,0.04);
+}
+
+.btn-primary:hover{
+  background: rgba(255,255,255,0.12);
+
+  transform: translateY(-3px);
+}
+ 
+  /* ─── SECTIONS GENERAL ─── */
+  section { padding: 6rem 0; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 2.5rem; }
+  .section-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.38em;
+    text-transform: uppercase; color: var(--clay);
+    margin-bottom: 0.8rem;
+  }
+  .section-myname {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 500; line-height: 1.1;
+    color: var(--port); margin-bottom: 0.5rem;
+  }
+  .section-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic; color: var(--purple-brown);
+    margin-bottom: 1.5rem;
+  }
+  .title-rule {
+    width: 52px; height: 2px;
+    background: linear-gradient(90deg, var(--port), var(--port));
+    margin-bottom: 3rem;
+  }
+ 
+  /* ─── REVEAL ANIMATION ─── */
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+ 
+  /* ─── SECTION 2: ABOUT ─── */
+  #about { background: var(--linen); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-portrait-wrap {
+    position: relative;
+  }
+  .about-portrait-frame {
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--clay) 0%, var(--purple-brown) 100%);
+    border-radius: 2px;
+    position: relative; overflow: hidden;
+    box-shadow: 16px 20px 50px var(--shadow-deep);
+  }
+  .about-portrait-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('https://i.pinimg.com/736x/62/3b/4e/623b4e3c976c088c05b9acf636fa9628.jpg') center/cover no-repeat;
+    opacity: 0.85;
+  }
+  .about-accent-box {
+    position: absolute;
+    bottom: -1.4rem; right: -1.4rem;
+    width: 80px; height: 80px;
+    border: 2px solid var(--port);
+    z-index: -1;
+  }
+  .about-accent-box2 {
+    position: absolute;
+    top: -1rem; left: -1rem;
+    width: 48px; height: 48px;
+    background: var(--port);
+    opacity: 0.18;
+  }
+  .about-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500; color: var(--wood); margin-bottom: 0.3rem;
+  }
+  .about-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: var(--clay); margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+  }
+  .about-text {
+    font-size: 0.88rem; line-height: 1.85;
+    color: rgba(86,54,36,0.82); margin-bottom: 1.4rem;
+  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
+  .about-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.42rem 1rem;
+    border: 1px solid var(--clay);
+    color: var(--clay); border-radius: 1px;
+  }
+ 
+  /* ─── SECTION 3: SERVICES ─── */
+  #services { background: var(--redwine); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+  }
+.section-titlee{
+    font-size: 3.1rem; /* tamaño */
+    font-weight: 600; /* grosor */
+    color: var(--linen); /* color */
+    letter-spacing: 2px; /* separación letras */
+    font-family: 'Cormorant Garamond', serif;
+}
+.section-label{
+    font-size: 0.9rem;
+    color: var(--purple-brown);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 500;
+}
+
+
+  .service-card {
+    background: var(--port);
+    padding: 2rem 1.6rem;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative; overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+    cursor: default;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--clay), var(--port));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px var(--shadow-warm);
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    font-size: 1.8rem; margin-bottom: 1rem;
+    display: block;
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--linen); margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .service-desc {
+    font-size: 0.87rem; line-height: 1.7;
+    color:var(--linen);
+  }
+ 
+  /* ───────────────────────────── */
+/* ─── SECTION 4: EVIDENCE ─── */
+/* ───────────────────────────── */
+
+#evidence{
+
+background:
+linear-gradient(
+165deg,
+var(--port) 0%,
+#4b2230 100%
+);
+
+position: relative;
+
+overflow: hidden;
+}
+
+#evidence::before{
+
+content: '';
+
+position: absolute;
+
+inset: 0;
+
+background:
+url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D5C4A1' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.section-professional{
+
+font-family:
+'Cormorant Garamond', serif;
+
+font-size:
+clamp(1.8rem, 4vw, 3.1rem);
+
+font-weight: 600;
+
+color: var(--linen);
+
+margin-bottom: 0.5rem;
+}
+
+#evidence .section-label{
+
+color:
+rgba(213,196,161,0.6);
+}
+
+#evidence .section-subtitle{
+
+color:
+rgba(213,196,161,0.75);
+}
+
+#evidence .title-rule{
+
+background:
+linear-gradient(
+90deg,
+var(--linen-dark),
+transparent
+);
+}
+
+.evidence-list{
+
+  display:grid;
+
+  grid-template-columns:repeat(3,minmax(260px,1fr));
+
+  gap:2rem;
+
+  width:100%;
+
+}
+
+.evidence-row{
+
+  display:flex;
+
+  flex-direction:column;
+
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid rgba(213,196,161,0.15);
+
+  overflow:hidden;
+
+  min-height:420px;
+
+  position:relative;
+
+  transition:.4s ease;
+
+}
+
+.evidence-row:hover{
+  transform: translateY(-4px);
+
+  border-color: rgba(213,196,161,0.35);
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+
+.evidence-num{
+  display:none;
+}
+
+.evidence-img{
+
+  width:100%;
+
+  height:260px;
+
+  min-height:260px;
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.evidence-img-1{
+
+background:
+linear-gradient(
+145deg,
+rgba(100,120,110,0.35),
+rgba(86,54,36,0.55)
+),
+
+url('https://i.pinimg.com/736x/28/31/91/283191839bba129373d9820490d5d4da.jpg')
+
+center/cover no-repeat;
+}
+
+.evidence-img-2{
+
+background:
+linear-gradient(
+145deg,
+rgba(83,40,62,0.45),
+rgba(86,54,36,0.45)
+),
+
+url('https://i.pinimg.com/736x/97/e5/4f/97e54f5430a2ed1ac6e6a67e4f0a7807.jpg')
+
+center/cover no-repeat;
+}
+
+.evidence-img-3{
+
+background:
+linear-gradient(
+145deg,
+rgba(81,32,39,0.45),
+rgba(100,120,110,0.4)
+),
+
+url('https://i.pinimg.com/736x/b1/ac/c7/b1acc7ddfeefe36bb5a7e6cf932a2a98.jpg')
+
+center/cover no-repeat;
+}
+
+.evidence-body{
+
+  padding:1.4rem;
+
+  display:flex;
+
+  flex-direction:column;
+
+  flex:1;
+
+}
+
+.evidence-title{
+
+font-family:
+'Playfair Display', serif;
+
+font-size: 1.1rem;
+
+font-weight: 600;
+
+color: var(--linen);
+
+margin-bottom: 0.7rem;
+
+line-height: 1.3;
+}
+
+.evidence-desc{
+
+font-size: 0.78rem;
+
+line-height: 1.8;
+
+color:
+rgba(213,196,161,0.75);
+
+margin-bottom: 1.2rem;
+}
+
+.evidence-skills{
+
+display: flex;
+
+flex-wrap: wrap;
+
+gap: 0.45rem;
+
+margin-bottom: 1.5rem;
+}
+
+.skill-pill{
+
+font-size: 0.62rem;
+
+font-weight: 500;
+
+letter-spacing: 0.1em;
+
+text-transform: uppercase;
+
+padding:
+0.34rem 0.72rem;
+
+background:
+rgba(255,255,255,0.05);
+
+color: var(--linen-dark);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+border-radius: 2px;
+}
+
+.btn-evidence{
+
+font-family: 'Poppins', sans-serif;
+
+font-size: 0.68rem;
+
+font-weight: 500;
+
+letter-spacing: 0.2em;
+
+text-transform: uppercase;
+
+text-decoration: none;
+
+display: inline-block;
+
+padding:
+0.75rem 1.7rem;
+
+border:
+1px solid rgba(213,196,161,0.4);
+
+color: var(--linen);
+
+position: relative;
+
+overflow: hidden;
+
+transition: all 0.35s ease;
+}
+
+.btn-evidence::before{
+
+content: '';
+
+position: absolute;
+
+inset: 0;
+
+background:
+rgba(255,255,255,0.08);
+
+transform: translateX(-101%);
+
+transition: transform 0.35s ease;
+}
+
+.btn-evidence:hover::before{
+
+transform: translateX(0);
+}
+
+/* Formas orgánicas */
+
+.evidence-row:nth-child(1){
+  border-radius:10px 8px 20px 12px;
+}
+
+.evidence-row:nth-child(2){
+  border-radius:22px 8px 12px 8px;
+}
+
+.evidence-row:nth-child(3){
+  border-radius:10px 10px 25px 18px;
+}
+
+@media(max-width:1200px){
+
+  .evidence-list{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .evidence-row:nth-child(3){
+    grid-column:1 / -1;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .evidence-list{
+    grid-template-columns:1fr;
+  }
+
+}
+ 
+ /* ===== TOOLS SECTION ===== */
+
+#tools{
+  background: var(--linen);
+  border-top: 2px solid rgba(74,34,48,0.05);
+border-bottom: 1px solid rgba(74,34,48,0.05);
+}
+
+
+
+ .tools-header{
+
+  text-align: center;
+
+  margin-bottom: 4rem;
+}
+
+.tools-header .title-rule{
+
+  margin: 2rem auto 0 auto;
+}
+
+#tools .container{
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* TOP LEFT SHAPE */
+
+#tools::before{
+
+  content: '';
+
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  background: var(--port);
+
+  opacity: 0.22;
+
+  top: 120px;
+  left: -120px;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  z-index: 0;
+}
+
+#tools::after{
+
+  content: '';
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  background: #b48b78;
+
+  opacity: 0.18;
+
+  bottom: 120px;
+  right: -80px;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  z-index: 0;
+}
+
+.section-titools{
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(1.8rem, 4vw, 3.1rem);
+
+  font-weight: 600; 
+
+  color: var(--port); margin-bottom: 0.5rem;
+}
+
+.tools-note{
+
+  max-width: 720px;
+
+  margin:
+    1.2rem auto 0 auto;
+
+  font-size: 0.82rem;
+
+  line-height: 1.9;
+
+  color: rgba(86,54,36,0.62);
+
+  letter-spacing: 0.03em;
+}
+
+.tools-category{
+
+  margin-bottom: 2rem;
+}
+
+.tools-category-title{
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.28em;
+
+  color: var(--clay);
+
+  margin-bottom: 2rem;
+
+  position: relative;
+
+  display: inline-block;
+}
+
+.tools-category-title::after{
+
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -10px;
+
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(74,34,48,0.12);
+}
+
+.tools-grid{
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+
+  gap: 1.5rem;
+}
+
+.tool-card{
+
+  position: relative;
+  background: var(--linen-light);
+  border: 1px solid rgba(74, 34, 48, 0.12);
+
+  border-radius: 18px;
+
+  padding: 1.5rem 1.3rem;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border 0.4s ease;
+
+}
+
+.tool-card::before{
+
+  content: '';
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  background:
+    radial-gradient(
+      rgba(255,255,255,0.22),
+      transparent
+    );
+
+  top: -80px;
+  right: -80px;
+
+  border-radius: 50%;
+}
+
+.tool-card:hover{
+
+  transform: translateY(-8px);
+
+  border: 1px solid rgba(74, 34, 48, 0.35);
+
+  display:flex;
+
+  flex-direction:column;
+
+  box-shadow:
+    0 20px 50px rgba(74,34,48,0.08),
+    0 10px 20px rgba(74,34,48,0.05);
+
+
+}
+
+.canva-logo{
+
+  width: 90px;
+
+  height: auto;
+
+}
+.tool-card h3{
+
+  margin-top:auto;
+}
+
+.tool-icon{
+
+  width: 42px;
+
+  margin-bottom: 1.4rem;
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+
+}
+
+
+.tool-card:hover .tool-icon{
+
+  transform: scale(1.08);
+
+  filter: drop-shadow(0 6px 12px rgba(74,34,48,0.18));
+
+}
+
+.tool-card h3{
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 0.98rem;
+
+  color: var(--wood);
+
+  margin-bottom: 0.8rem;
+}
+
+.tool-card p{
+
+  font-size: 0.84rem;
+
+  line-height: 1.8;
+
+  color: rgba(86,54,36,0.72);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .tools-grid{
+
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card{
+
+    min-height: auto;
+  }
+
+}
+ 
+  /* ─── SECTION 6: LANGUAGES ─── */
+  #languages { background: var(--redwine); }
+  .languages-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .lang-intro {
+    font-size: 1rem; line-height: 1.85;
+    color: var(--linen);
+  }
+  .lang-list { display: flex; flex-direction: column; gap: 1.8rem; }
+  .section-multilingual {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3.1rem);
+    font-weight: 600; 
+    color: var(--linen); margin-bottom: 0.5rem;
+  } 
+  
+  .lang-country {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--linen-dark);
+    margin-bottom: 0.5rem;
+  }
+  .lang-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 0.7rem;
+  }
+  .lang-name-wrap { display: flex; align-items: center; gap: 0.7rem; }
+  .lang-flag {
+    width: 30px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  .lang-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 500; color: var(--wood);
+  }
+  .lang-level {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--linen-dark);
+  }
+  .lang-bar {
+    height: 4px; background: var(--linen-light);
+    border-radius: 2px; overflow: hidden;
+  }
+  .lang-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(90deg, var(--clay), var(--port));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 1.2s cubic-bezier(0.22,1,0.36,1);
+  }
+  .lang-fill.animated { transform: scaleX(1); }
+
+  /* ─── 7. TESTIMONIALS ─── */
+/* ─── TESTIMONIALS ─── */
+
+.section-testittle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3.1rem);
+    font-weight: 600; 
+    color: var(--port); margin-bottom: 0.5rem;
+
+}
+
+.testimonial-country{
+    display: inline-block;
+
+    margin-top: 0.5rem;
+
+    padding: 0.3rem 0.8rem;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 0.72rem;
+
+    letter-spacing: 1px;
+
+    color: var(--linen-dark);
+}
+
+.testimonial-flag {
+    width: 18px;
+    height: 13px;
+    margin-right: 0.4rem;
+    object-fit: cover;
+    vertical-align: -2px;
+    border-radius: 1px;
+}
+
+#testimonials {
+
+  background: var(--linen);
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.testimonials-track {
+  display: flex;
+  gap: 2rem;
+   width:max-content;
+  max-width: none;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  animation: scrollTestimonials 40s linear infinite;
+}
+
+.testimonials-track:hover{
+    animation-play-state: paused;
+}
+
+.testimonials-track::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes scrollTestimonials {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-card {
+
+  width: 420px;
+
+  min-height: 280px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.28)
+    );
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  padding: 2rem;
+
+  border-radius: 14px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease,
+    border 0.5s ease;
+
+  box-shadow:
+    0 10px 30px rgba(74,34,48,0.05),
+    0 20px 60px rgba(74,34,48,0.08),
+    0 0 30px rgba(255,255,255,0.08);
+
+  animation: floatingCard 5s ease-in-out infinite;
+}
+
+/* STARS */
+
+.stars {
+
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+}
+
+.stars::before,
+.stars::after {
+
+  content: '';
+
+  position: absolute;
+
+  width: 200%;
+  height: 200%;
+
+  background-image:
+    radial-gradient(rgba(255,255,255,0.45) 1px, transparent 1px);
+
+  background-size: 120px 120px;
+
+  animation: starsMove 90s linear infinite;
+  
+  opacity: 0.25;
+}
+
+.stars::after {
+
+  background-size: 180px 180px;
+
+  animation-duration: 140s;
+
+  opacity: 0.12;
+}
+
+@keyframes starsMove {
+
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-120px);
+  }
+
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.08),
+    0 5px 20px rgba(0,0,0,0.05);
+}
+
+.testimonial-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-bottom: 1.4rem;
+}
+
+.testimonial-photo {
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid var(--linen-dark);
+}
+
+.testimonial-name {
+  font-family: 'Playfair Display', serif;
+
+  font-size: 1.05rem;
+
+  font-weight: 600;
+
+  color: var(--wood);
+}
+
+.testimonial-role {
+  font-size: 0.7rem;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: var(--clay);
+
+  margin-top: 0.25rem;
+}
+
+.testimonial-text {
+  font-size: 0.84rem;
+
+  line-height: 1.9;
+
+  color: rgba(86,54,36,0.88);
+
+  margin-bottom: 1rem;
+}
+
+.testimonial-translation {
+  font-size: 0.77rem;
+
+  line-height: 1.8;
+
+  color: rgba(86,54,36,0.58);
+
+  font-style: italic;
+
+  border-top: 1px solid rgba(74,34,48,0.08);
+
+  padding-top: 1rem;
+}
+
+.testimonial-card::before {
+
+  content: '';
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  background: radial-gradient(
+    rgba(255,255,255,0.22),
+    transparent
+  );
+
+  top: -60px;
+  right: -60px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* MOBILE */
+
+/* FLOATING EFFECT */
+
+@keyframes floatingCard {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .testimonial-card {
+    width: 420px;
+    max-width: 420px;
+    min-height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .testimonials-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    max-width: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    animation: none;
+    transform: none;
+  }
+
+}
+ 
+  /* ─── SECTION 8: CONTACT ─── */
+  #contact {
+    background:var(--port);
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content: 'MCCM';
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22rem; font-weight: 700; letter-spacing: 0.08em;
+    color: rgba(213,196,161,0.03); line-height: 1;
+    pointer-events: none; user-select: none;
+  }
+  #contact .section-label { color: rgba(213,196,161,0.5); }
+  #contact .section-title { color: var(--linen); }
+  #contact .section-subtitle { color: rgba(213,196,161,0.7); }
+ .section-title-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-tittlecontact{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3.1rem);
+    font-weight: 600; 
+    color: var(--linen); margin-bottom: 0.5rem;
+}
+.title-rule{
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--linen-dark), transparent);
+   
+}
+  .contact-layout {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: start;
+  }
+  .contact-info-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300; color: var(--linen);
+    line-height: 1.2; margin-bottom: 1.8rem;
+  }
+  .contact-info-heading em { font-style: italic; color: var(--linen-dark); }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(213,196,161,0.15);
+    transition: all 0.3s ease;
+    border-radius: 1px;
+  }
+  .contact-link:hover {
+    background: rgba(213,196,161,0.07);
+    border-color: rgba(213,196,161,0.3);
+    transform: translateX(6px);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-link-icon.email { background: rgba(100,120,110,0.3); }
+  .contact-link-icon.linkedin { background: rgba(83,40,62,0.4); }
+  .contact-link-icon.fiverr { background: rgba(86,54,36,0.4); }
+  .contact-link-icon.upwork { background: rgba(81,32,39,0.4); }
+  .contact-link-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(213,196,161,0.5);
+    display: block; margin-bottom: 0.15rem;
+  }
+  .contact-link-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem; color: var(--linen);
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(213,196,161,0.55);
+  }
+  .form-input, .form-textarea {
+    background: rgba(213,196,161,0.07);
+    border: 1px solid rgba(213,196,161,0.18);
+    padding: 0.9rem 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem; color: var(--linen);
+    outline: none; border-radius: 1px;
+    transition: border-color 0.3s, background 0.3s;
+    width: 100%;
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(213,196,161,0.3); }
+  .form-input:focus, .form-textarea:focus {
+    border-color: rgba(213,196,161,0.45);
+    background: rgba(213,196,161,0.1);
+  }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .btn-submit {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; cursor: pointer;
+    padding: 1rem 2.8rem; border: 1.5px solid var(--linen);
+    background: transparent; color: var(--linen);
+    transition: all 0.4s ease; border-radius: 1px;
+    align-self: flex-start; position: relative; overflow: hidden;
+  }
+  .btn-submit::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--linen);
+    transform: translateY(101%); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn-submit:hover { color: var(--wood); }
+  .btn-submit:hover::before { transform: translateY(0); }
+  .btn-submit span { position: relative; z-index: 1; }
+  .contact-form{
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.2rem;
+
+}
+.form-group{
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+.btn-submit{
+
+  margin-top: 1rem;
+
+}
+ 
+  /* ─── FOOTER ─── */
+
+
+  footer {
+    
+    background: #2b1a10;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(213,196,161,0.08);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 300; letter-spacing: 0.28em;
+    color: rgba(213,196,161,0.4); margin-bottom: 0.5rem;
+  }
+  .footer-text {
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    color: rgba(213,196,161,0.25);
+  }
+ 
+  /* ─── MOBILE MENU ─── */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 99;
+    width: 100%; max-width: 100%; box-sizing: border-box;
+    background: rgba(246,240,234,0.97);
+    backdrop-filter: blur(12px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap:2.8rem; padding:40px;
+    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    overflow-x: hidden;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 400; letter-spacing: 0.12em;
+    color: var(--wood); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--port); }
+  .mobile-close {
+    position: absolute; top: 1.5rem; right: 1.8rem;
+    font-size:2rem; transition:.3s; transition:.3s; cursor: pointer; color: var(--wood);
+    background: none; border: none;
+  }
+  .mobile-close:hover{
+
+transform:rotate(90deg);
+
+}
+ 
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    .evidence-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .languages-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .lang-intro { display: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-portrait-frame { max-width: 320px; margin: 0 auto; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 4.5rem 0; }
+    .hero-monogram { letter-spacing: 0.12em; }
+  }
+  @media (max-width: 500px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+/* ============================
+   TABLET
+============================ */
+
+@media (max-width:1024px){
+
+}
+
+/* ============================
+   MOBILE
+============================ */
+
+@media (max-width:768px){
+
+}
+
+/* ============================
+   SMALL MOBILE
+============================ */
+
+@media (max-width:480px){
+
+}
+
+@media (max-width:768px){
+
+.contact-layout{
+    grid-template-columns:1fr;
+    gap:3rem;
+}
+
+.form-row{
+    grid-template-columns:1fr;
+}
+
+.btn-submit{
+    width:100%;
+    text-align:center;
+}
+
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+   MCCM Portfolio
+========================================================== */
+
+/* ---------- LAPTOPS (1200px) ---------- */
+
+@media (max-width:1200px){
+
+.container{
+    width:min(92%,1100px);
+}
+
+.hero-content{
+    max-width:560px;
+}
+
+}
+
+
+/* ---------- TABLETS (992px) ---------- */
+
+@media (max-width:992px){
+
+section{
+    padding:90px 0;
+}
+
+/* HERO */
+
+#hero{
+
+    padding:0 7%;
+}
+
+.hero-title-main{
+
+    font-size:clamp(4.5rem,11vw,7rem);
+}
+
+.hero-sub{
+
+    max-width:500px;
+}
+
+/* ABOUT */
+
+.about-grid{
+
+    grid-template-columns:1fr;
+
+    gap:70px;
+}
+
+/* SERVICES */
+
+.services-grid{
+
+    grid-template-columns:repeat(2,1fr);
+}
+
+/* EVIDENCE */
+
+.evidence-grid{
+
+    grid-template-columns:1fr;
+}
+
+/* TOOLS */
+
+.tools-grid{
+
+    grid-template-columns:repeat(2,1fr);
+}
+
+/* TESTIMONIALS */
+
+.testimonials-grid{
+
+    grid-template-columns:1fr;
+}
+
+/* CONTACT */
+
+.contact-layout{
+
+    grid-template-columns:1fr;
+
+    gap:60px;
+}
+
+}
+
+
+/* ---------- MOBILE (768px) ---------- */
+
+@media (max-width:768px){
+
+html{
+
+    font-size:15px;
+}
+
+section{
+
+    padding:75px 0;
+}
+
+/* NAVBAR */
+
+.nav-links{
+
+    display:none;
+}
+
+/* HERO */
+
+#hero{
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:0 30px;
+}
+
+.hero-content{
+
+    max-width:100%;
+}
+
+.hero-title-main{
+
+    font-size:clamp(3.8rem,15vw,5.5rem);
+}
+
+.hero-sub{
+
+    font-size:.9rem;
+
+    max-width:100%;
+}
+
+/* ABOUT */
+
+.about-grid{
+
+    gap:45px;
+}
+
+.about-image img{
+
+    width:100%;
+}
+
+/* SERVICES */
+
+.services-grid{
+
+    grid-template-columns:1fr;
+}
+
+/* TOOLS */
+
+.tools-grid{
+
+    grid-template-columns:1fr;
+}
+
+/* EVIDENCE */
+
+.evidence-grid{
+
+    grid-template-columns:1fr;
+}
+
+.evidence-card{
+
+    width:100%;
+}
+
+/* CONTACT */
+
+.contact-layout{
+
+    gap:45px;
+}
+
+.form-row{
+
+    grid-template-columns:1fr;
+}
+
+.contact-links{
+
+    gap:14px;
+}
+
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width:480px){
+
+.hero-title-main{
+
+    font-size:3.3rem;
+}
+
+.btn-primary{
+
+    width:100%;
+
+    text-align:center;
+}
+
+.btn-submit{
+
+    width:100%;
+}
+
+.section-title,
+.section-professional,
+.section-titools,
+.section-title-testimonial,
+.section-tittlecontact{
+
+    font-size:1.65rem;
+}
+
+.container{
+
+    width:92%;
+}
+}
+.mobile-menu a{
+
+opacity:0;
+
+transform:translateY(15px);
+
+animation:none;
+
+}
+.mobile-menu.open a{
+
+animation:mobileLinks .5s forwards;
+
+}
+@keyframes mobileLinks{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@media (max-width:768px){
+
+nav{
+    padding:1rem 1.2rem;
+}
+
+.nav-logo{
+    font-size:1.6rem;
+}
+
+.nav-links{
+    display:none;
+}
+
+.hamburger{
+    display:flex;
+}
+
+}
+
+/* =======================================
+   NAV RESPONSIVE
+======================================= */
+
+@media (max-width:992px){
+
+nav{
+
+padding:1rem 2rem;
+
+}
+
+.nav-links{
+
+gap:1.4rem;
+
+}
+
+}
+
+@media (max-width:768px){
+
+nav{
+
+padding:1rem 1.4rem;
+
+}
+
+.nav-links{
+
+display:none;
+
+}
+
+.hamburger{
+
+display:flex;
+
+}
+
+.nav-logo{
+
+font-size:1.45rem;
+
+letter-spacing:.16em;
+
+}
+
+.hamburger span{
+
+width:28px;
+
+height:2px;
+
+}
+
+.mobile-menu a{
+
+font-size:1.65rem;
+
+}
+
+}
+
+@media (max-width:480px){
+
+nav{
+
+padding:.9rem 1rem;
+
+}
+
+.nav-logo{
+
+font-size:1.3rem;
+
+}
+
+.mobile-menu a{
+
+font-size:1.45rem;
+
+}
+
+.mobile-close{
+
+font-size:1.8rem;
+
+}
+
+}
+/* ==========================================================
+   HERO RESPONSIVE
+========================================================== */
+
+
+/* ---------- TABLETS ---------- */
+
+@media (max-width:992px){
+
+#hero{
+
+padding-left:6%;
+
+}
+
+.hero-content{
+
+max-width:520px;
+
+}
+
+.hero-title-main{
+
+font-size:clamp(4.5rem,11vw,8rem);
+
+}
+
+.hero-sub{
+
+font-size:1rem;
+
+max-width:430px;
+
+}
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width:768px){
+
+#hero{
+
+justify-content:center;
+
+align-items:center;
+
+padding:0 32px;
+
+text-align:center;
+
+}
+
+.hero-bg{
+
+background-position:60% center;
+
+}
+
+.hero-content{
+
+max-width:100%;
+
+}
+
+.hero-mini{
+
+font-size:.68rem;
+
+letter-spacing:.28em;
+
+}
+
+.hero-title-main{
+
+font-size:clamp(3.9rem,18vw,5.8rem);
+
+letter-spacing:.05em;
+
+margin-bottom:.8rem;
+
+}
+
+.hero-sub{
+
+max-width:100%;
+
+font-size:1rem;
+
+line-height:1.8;
+
+margin:0 auto 2rem;
+
+}
+
+.btn-primary{
+
+padding:.95rem 2rem;
+
+font-size:.68rem;
+
+}
+
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width:480px){
+
+#hero{
+
+padding:0 22px;
+
+}
+
+.hero-bg{
+
+background-position:65% center;
+
+}
+
+.hero-mini{
+
+font-size:.62rem;
+
+}
+
+.hero-title-main{
+
+font-size:3.3rem;
+
+}
+
+.hero-sub{
+
+font-size:.92rem;
+
+}
+
+.btn-primary{
+
+width:100%;
+
+text-align:center;
+
+}
+.testimonials-track{
+    animation:none;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+}
+.testimonial-card{
+    scroll-snap-align:center;
+}
+}
+
+
+
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">MCCM</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#evidence">Portfolio</a></li>
+    <li><a href="#tools">Tools</a></li>
+   <li><a href="#languages">Languages</a></li>
+   <li><a href="#testimonials">Testimonials</a></li>
+   <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link" style="color: linen;">Services</a>
+  <a href="#evidence" class="mobile-link">Portfolio</a>
+  <a href="#tools" class="mobile-link">Tools</a>
+  <a href="#languages" class="mobile-link">Languages</a>
+  <a href="#testimonials" class="mobile-link">Testimonials</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+ 
+<!-- SECTION 1: HERO -->
+<section id="hero">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+
+    <p class="hero-mini">
+      Virtual Assistant · Multilingual · Remote Support
+    </p>
+
+    <h1 class="hero-title-main">
+      MCCM
+    </h1>
+
+    <p class="hero-sub">
+      Elegant administrative support for modern businesses and international clients.
+    </p>
+
+    <a href="#contact" class="btn-primary">
+      <span>Work With Me</span>
+    </a>
+
+  </div>
+
+</section>
+ 
+<!-- SECTION 2: ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-portrait-wrap">
+          <div class="about-portrait-frame"></div>
+          <div class="about-accent-box"></div>
+          <div class="about-accent-box2"></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="section-label">About Me</div>
+        <div class="section-myname">María Claudia<br>Collante Méndez</div>
+        <div class="section-subtitle">Virtual Assistant & Remote Professional</div>
+        <div class="title-rule"></div>
+        <p class="about-text">
+          I am a dedicated and detail-oriented Virtual Assistant with a genuine passion for creating order, streamlining communication, and delivering reliable remote support. With a strong foundation in administrative excellence and a multilingual background, I bring a level of sophistication and thoroughness that elevates the work of the clients I serve.
+        </p>
+        <p class="about-text">
+          My approach to every project is grounded in precision, discretion, and continuous improvement. Whether managing complex calendars, curating professional correspondence, or supporting business operations across time zones, I treat each task with the same commitment I would give my own priorities.
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">Organized</span>
+          <span class="about-tag">Multilingual</span>
+          <span class="about-tag">Detail-Oriented</span>
+          <span class="about-tag">Reliable</span>
+          <span class="about-tag">Proactive</span>
+          <span class="about-tag">Communicative</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SECTION 3: SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="reveal" style="text-align:center; margin-bottom: 1rem;">
+      <div class="section-label" style="text-align:center;">What I Offer</div>
+     <div class="section-title-wrapper">
+    <div class="section-titlee">Services</div>
+</div>
+      <div class="section-subtitle" style="text-align:center;">Premium administrative & virtual support</div>
+      <div class="title-rule" style="margin: 0 auto 3rem;"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">📧</span>
+        <div class="service-title">Email Management</div>
+        <p class="service-desc">Inbox triage, professional drafting, template creation, and organized correspondence handling to keep communication effortless.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📅</span>
+        <div class="service-title">Calendar Management</div>
+        <p class="service-desc">Scheduling, appointment coordination, meeting prep, and time-blocking strategies for maximum productivity.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">📂</span>
+        <div class="service-title">Document Organization</div>
+        <p class="service-desc">File management, digital archiving, formatting, and document creation with attention to structure and clarity.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-4">
+        <span class="service-icon">💬</span>
+        <div class="service-title">Customer Support</div>
+        <p class="service-desc">Professional, empathetic client communication, follow-ups, and issue resolution across channels.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">📊</span>
+        <div class="service-title">Administrative Support</div>
+        <p class="service-desc">Operational assistance, report preparation, research, and backend business management support.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📝</span>
+        <div class="service-title">Data Entry</div>
+        <p class="service-desc">Accurate, swift, and organized data input, database maintenance, and information processing.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">📱</span>
+        <div class="service-title">Social Media Assistance</div>
+        <p class="service-desc">Content scheduling, engagement monitoring, caption writing, and basic platform management.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-4">
+        <span class="service-icon">🌎</span>
+        <div class="service-title">Multilingual Communication</div>
+        <p class="service-desc">Professional support in Spanish, English, French, and German for global clients and diverse teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- SECTION 4: EVIDENCE -->
+
+<section id="evidence">
+
+  <div class="container">
+
+```
+<div class="reveal" style="margin-bottom:1rem;">
+
+  <div class="section-label">
+    Portfolio
+  </div>
+
+  <div class="section-professional">
+    Professional Evidence<br>
+    &amp; Work Samples
+  </div>
+
+  <div class="section-subtitle">
+    Real skills demonstrated through real work
+  </div>
+
+  <div class="title-rule"></div>
+
+</div>
+
+<div class="evidence-list">
+
+  <!-- EVIDENCE 01 -->
+
+  <div class="evidence-row reveal reveal-delay-1">
+
+    <div class="evidence-num">01</div>
+
+    <div class="evidence-img evidence-img-1"></div>
+
+    <div class="evidence-body">
+
+      <div class="evidence-title">
+        Email Management & Client Communication
+      </div>
+
+      <p class="evidence-desc">
+        Professional inbox organization, multilingual communication,
+        customer support responses, and polished email drafting.
+      </p>
+
+      <div class="evidence-skills">
+
+        <span class="skill-pill">Gmail</span>
+        <span class="skill-pill">Templates</span>
+        <span class="skill-pill">Customer Support</span>
+        <span class="skill-pill">English</span>
+
+      </div>
+
+      <a href="evidences/01evidence.html" class="btn-evidence">
+        View Sample
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- EVIDENCE 02 -->
+
+  <div class="evidence-row reveal reveal-delay-2">
+
+    <div class="evidence-num">02</div>
+
+    <div class="evidence-img evidence-img-2"></div>
+
+    <div class="evidence-body">
+
+      <div class="evidence-title">
+        Calendar Scheduling & Workflow Coordination
+      </div>
+
+      <p class="evidence-desc">
+        Structured scheduling systems, calendar management,
+        task organization and productivity workflows.
+      </p>
+
+      <div class="evidence-skills">
+
+        <span class="skill-pill">Google Calendar</span>
+        <span class="skill-pill">Notion</span>
+        <span class="skill-pill">Scheduling</span>
+        <span class="skill-pill">Planning</span>
+
+      </div>
+
+      <a href="evidences/02evidence.html" class="btn-evidence">
+        View Sample
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- EVIDENCE 03 -->
+
+  <div class="evidence-row reveal reveal-delay-3">
+
+    <div class="evidence-num">03</div>
+
+    <div class="evidence-img evidence-img-3"></div>
+
+    <div class="evidence-body">
+
+      <div class="evidence-title">
+        Document Organization & Data Entry
+      </div>
+
+      <p class="evidence-desc">
+Organized spreadsheets, digital file management, structured databases, document organization, workflow coordination, and efficient administrative systems.
+      </p>
+      <p></p>
+
+      <div class="evidence-skills">
+
+        <span class="skill-pill">Spreadsheets</span>
+        <span class="skill-pill">Data Entry</span>
+        <span class="skill-pill">Organization</span>
+        <span class="skill-pill">File Management</span>
+
+      </div>
+
+      <a href="evidences/03evidence.html" class="btn-evidence">
+        View Sample
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+```
+
+  </div>
+
+</section>
+
+<!-- SECTION 5: TOOLS -->
+<section id="tools">
+
+<div class="container">
+
+  <div class="reveal tools-header">
+
+    <div class="section-label">
+      TECH STACK
+    </div>
+
+    <div class="section-titools">
+      Tools & Systems
+    </div>
+
+    <div class="section-subtitle">
+      Modern platforms I use to support remote teams efficiently
+    </div>
+
+    <p class="tools-note">
+      Experienced working with modern digital platforms and highly adaptable to evolving systems and workflows.
+    </p>
+
+    <div class="title-rule"></div>
+
+  </div>
+
+    <!-- WORKFLOW -->
+    <div class="tools-category reveal">
+
+      <div class="tools-category-title">
+        WORKFLOW & ORGANIZATION
+      </div>
+
+      <div class="tools-grid">
+
+        <!-- GOOGLE -->
+        <div class="tool-card">
+
+        <img src="https://cdn.simpleicons.org/google" class="tool-icon">          <h3>Google Workspace</h3>
+
+          <p>
+            Email management, cloud collaboration and document organization
+          </p>
+
+        </div>
+
+        <!-- NOTION -->
+        <div class="tool-card">
+
+          <img src="https://cdn.simpleicons.org/notion" class="tool-icon">
+
+          <h3>Notion</h3>
+
+          <p>
+            Workflow systems, knowledge management and planning
+          </p>
+
+        </div>
+
+        <!-- CLICKUP -->
+        <div class="tool-card">
+
+          <img src="https://cdn.simpleicons.org/clickup" class="tool-icon">
+
+          <h3>ClickUp</h3>
+
+          <p>
+            Task coordination and productivity tracking
+          </p>
+
+        </div>
+
+        <!-- CANVA -->
+        <div class="tool-card">
+
+<img src="https://cdn.worldvectorlogo.com/logos/canva-wordmark-2.svg" class="tool-icon canva-logo">          <h3>Canva</h3>
+
+          <p>
+            Professional visual content and presentation design
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- COMMUNICATION -->
+    <div class="tools-category reveal">
+
+      <div class="tools-category-title">
+        COMMUNICATION & COORDINATION
+      </div>
+
+      <div class="tools-grid">
+
+        <!-- SLACK -->
+        <div class="tool-card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" class="tool-icon">
+          <h3>Slack</h3>
+
+          <p>
+            Remote communication and team collaboration
+          </p>
+
+        </div>
+
+        <!-- ZOOM -->
+        <div class="tool-card">
+
+          <img src="https://cdn.simpleicons.org/zoom" class="tool-icon">
+
+          <h3>Zoom</h3>
+
+          <p>
+            Virtual meetings and professional coordination
+          </p>
+
+        </div>
+
+        <!-- CALENDLY -->
+        <div class="tool-card">
+
+          <img src="https://cdn.simpleicons.org/calendly" class="tool-icon">
+
+          <h3>Calendly</h3>
+
+          <p>
+            Scheduling systems and meeting organization
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- AI -->
+    <div class="tools-category reveal">
+
+      <div class="tools-category-title">
+        AI & MODERN WORKFLOWS
+      </div>
+
+      <div class="tools-grid">
+
+        <!-- CHATGPT -->
+        <div class="tool-card">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" class="tool-icon">
+          <h3>ChatGPT</h3>
+
+          <p>
+            AI assistance, drafting and workflow support
+          </p>
+
+        </div>
+
+        <!-- ZAPIER -->
+        <div class="tool-card">
+        <img src="https://cdn.simpleicons.org/zapier" class="tool-icon">
+
+          <h3>Zapier</h3>
+
+          <p>
+            Workflow automation and platform integrations
+          </p>
+
+        </div>
+
+        <!-- HUBSPOT -->
+        <div class="tool-card">
+          <img src="https://cdn.simpleicons.org/hubspot" class="tool-icon">
+
+          <h3>HubSpot</h3>
+
+          <p>
+            CRM organization and client communication systems
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+ 
+<!-- SECTION 6: LANGUAGES -->
+<section id="languages">
+  <div class="container">
+    <div class="languages-layout">
+      <div class="reveal">
+        <div class="section-label">Languages</div>
+        <div class="section-multilingual">Multilingual<br>by Nature</div>
+        <div class="section-subtitle">Communication without borders</div>
+        <div class="title-rule"></div>
+        <p class="lang-intro">
+          Language is the foundation of exceptional virtual assistance. My multilingual capability allows me to serve clients across Europe, Latin America, and North America with cultural fluency and professional precision — bridging communication gaps that many professionals simply cannot.
+        </p>
+        <p class="lang-intro" style="margin-top:1rem;">
+          Whether drafting a formal email in German, conducting a support call in English, or coordinating in French, I bring clarity and confidence to every exchange.
+        </p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="lang-list" id="langList">
+          <div class="lang-item">
+            <div class="lang-header">
+              <div class="lang-name-wrap">
+                <img class="lang-flag" src="https://flagcdn.com/w40/es.png" alt="Spain flag">
+                <span class="lang-country">Spanish</span>
+              </div>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" data-width="1"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <div class="lang-name-wrap">
+                <img class="lang-flag" src="https://flagcdn.com/w40/gb.png" alt="United Kingdom flag">
+                <span class="lang-country">English</span>
+              </div>
+              <span class="lang-level">Advanced</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" data-width="0.88"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <div class="lang-name-wrap">
+                <img class="lang-flag" src="https://flagcdn.com/w40/fr.png" alt="France flag">
+                <span class="lang-country">French</span>
+              </div>
+              <span class="lang-level">Intermediate</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" data-width="0.65"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <div class="lang-name-wrap">
+                <img class="lang-flag" src="https://flagcdn.com/w40/it.png" alt="Italy flag">
+                <span class="lang-country">Italian</span>
+              </div>
+              <span class="lang-level">Intermediate</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" data-width="0.65"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <div class="lang-name-wrap">
+                <img class="lang-flag" src="https://flagcdn.com/w40/de.png" alt="Germany flag">
+                <span class="lang-country">German</span>
+              </div>
+              <span class="lang-level">Elementary</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" data-width="0.38"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: TESTIMONIALS -->
+<section id="testimonials">
+  <div class="stars"></div>
+  <div class="container">
+
+    <div class="reveal" style="text-align:center; margin-bottom:1rem;">
+      <div class="section-label" style="text-align:center;">Testimonials</div>
+      <div class="section-testittle" style="text-align:center;">What Clients Say</div>
+      <div class="section-subtitle" style="text-align:center;">
+        Professional experiences from people I've worked with
+      </div>
+      <div class="title-rule" style="margin: 0 auto 3rem;"></div>
+    </div>
+
+    <div class="testimonials-track">
+
+      <!-- FRANCISCO -->
+<div class="testimonial-card reveal reveal-delay-1">
+
+  <div class="testimonial-top">
+    <img src="franpic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Francisco Salazar
+      </div>
+
+      <div class="testimonial-role">
+        Systems Engineer · Team Leader
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/es.png" alt="Spain flag" class="testimonial-flag">Spain
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “María Claudia siempre mostró una organización impecable y mucha iniciativa.
+    Su apoyo administrativo y su capacidad para resolver problemas hicieron una
+    diferencia enorme en nuestro flujo de trabajo.”
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia consistently demonstrated exceptional organization and initiative.
+    Her administrative support and problem-solving abilities made a huge difference
+    in our workflow.”
+  </p>
+
+</div>
+
+      <!-- HUGO -->
+<div class="testimonial-card reveal reveal-delay-2">
+
+  <div class="testimonial-top">
+    <img src="hugopic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Hugo Molinares
+      </div>
+
+      <div class="testimonial-role">
+        Entrepreneur · Business Owner
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/us.png" alt="United States flag" class="testimonial-flag">United States
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “Working with María Claudia was an excellent experience.
+    She communicates professionally, stays organized under pressure,
+    and always follows through with responsibilities.”
+  </p>
+
+</div>
+
+      <!-- ANGELY -->
+<div class="testimonial-card reveal reveal-delay-3">
+
+  <div class="testimonial-top">
+    <img src="angepic.jpeg" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Angely Cervantes
+      </div>
+
+      <div class="testimonial-role">
+        Language Teacher
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/fr.png" alt="France flag" class="testimonial-flag">France
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “María Claudia m’a beaucoup aidée avec l’organisation de mes cours et de mon agenda.
+    Elle est créative, responsable et très attentive aux détails.”
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia helped me greatly with organizing my classes and schedule.
+    She is creative, responsible, and highly detail-oriented.”
+  </p>
+
+</div>
+
+      <!-- MALAK -->
+<div class="testimonial-card reveal reveal-delay-4">
+
+  <div class="testimonial-top">
+    <img src="malakpic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">Malak Zinbi Benaou</div>
+
+      <div class="testimonial-role">
+        General Assistant
+      </div>
+
+      <!-- BANDERA -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/ma.png" alt="Morocco flag" class="testimonial-flag">Morocco
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    "Maria Claudia بنت منظمة بزاف وكتعرف كيفاش تتعامل مع الناس باحترافية.
+    الخدمة معاها كانت مريحة بزاف."
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia is extremely organized and knows how to work with people professionally.
+    Working with her was a very comfortable experience.”
+  </p>
+
+</div>
+
+     <!-- ELI -->
+<div class="testimonial-card reveal reveal-delay-1">
+
+  <div class="testimonial-top">
+    <img src="elipic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Elizannet Berajou
+      </div>
+
+      <div class="testimonial-role">
+        Psychopedagogical Tutor
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/ve.png" alt="Venezuela flag" class="testimonial-flag">Venezuela
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “María Claudia es una persona comprometida y muy dedicada.
+    Tiene una capacidad increíble para organizar tareas y transmitir tranquilidad.”
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia is highly committed and dedicated.
+    She has an incredible ability to organize tasks and bring calm to any situation.”
+  </p>
+
+</div>
+
+      <!-- FRANCISCO -->
+<div class="testimonial-card reveal reveal-delay-1">
+
+  <div class="testimonial-top">
+    <img src="franpic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Francisco Salazar
+      </div>
+
+      <div class="testimonial-role">
+        Systems Engineer · Team Leader
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/es.png" alt="Spain flag" class="testimonial-flag">Spain
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “María Claudia siempre mostró una organización impecable y mucha iniciativa.
+    Su apoyo administrativo y su capacidad para resolver problemas hicieron una
+    diferencia enorme en nuestro flujo de trabajo.”
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia consistently demonstrated exceptional organization and initiative.
+    Her administrative support and problem-solving abilities made a huge difference
+    in our workflow.”
+  </p>
+
+</div>
+
+      <!-- HUGO -->
+<div class="testimonial-card reveal reveal-delay-2">
+
+  <div class="testimonial-top">
+    <img src="hugopic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Hugo Molinares
+      </div>
+
+      <div class="testimonial-role">
+        Entrepreneur · Business Owner
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/us.png" alt="United States flag" class="testimonial-flag">United States
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “Working with María Claudia was an excellent experience.
+    She communicates professionally, stays organized under pressure,
+    and always follows through with responsibilities.”
+  </p>
+
+</div>
+     <!-- ANGELY -->
+<div class="testimonial-card reveal reveal-delay-3">
+
+  <div class="testimonial-top">
+    <img src="angepic.jpeg" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Angely Cervantes
+      </div>
+
+      <div class="testimonial-role">
+        Language Teacher
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/fr.png" alt="France flag" class="testimonial-flag">France
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “María Claudia m’a beaucoup aidée avec l’organisation de mes cours et de mon agenda.
+    Elle est créative, responsable et très attentive aux détails.”
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia helped me greatly with organizing my classes and schedule.
+    She is creative, responsible, and highly detail-oriented.”
+  </p>
+
+</div>
+
+      <!-- MALAK -->
+<div class="testimonial-card reveal reveal-delay-4">
+
+  <div class="testimonial-top">
+    <img src="malakpic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">Malak Zinbi Benaou</div>
+
+      <div class="testimonial-role">
+        General Assistant
+      </div>
+
+      <!-- BANDERA -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/ma.png" alt="Morocco flag" class="testimonial-flag">Morocco
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    "Maria Claudia بنت منظمة بزاف وكتعرف كيفاش تتعامل مع الناس باحترافية.
+    الخدمة معاها كانت مريحة بزاف."
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia is extremely organized and knows how to work with people professionally.
+    Working with her was a very comfortable experience.”
+  </p>
+
+</div>
+
+      <!-- ELI -->
+<div class="testimonial-card reveal reveal-delay-1">
+
+  <div class="testimonial-top">
+    <img src="elipic.png" class="testimonial-photo">
+
+    <div>
+      <div class="testimonial-name">
+        Elizannet Berajou
+      </div>
+
+      <div class="testimonial-role">
+        Psychopedagogical Tutor
+      </div>
+
+      <!-- PAÍS -->
+      <div class="testimonial-country">
+        <img src="https://flagcdn.com/w40/ve.png" alt="Venezuela flag" class="testimonial-flag">Venezuela
+      </div>
+    </div>
+  </div>
+
+  <p class="testimonial-text">
+    “María Claudia es una persona comprometida y muy dedicada.
+    Tiene una capacidad increíble para organizar tareas y transmitir tranquilidad.”
+  </p>
+
+  <p class="testimonial-translation">
+    “María Claudia is highly committed and dedicated.
+    She has an incredible ability to organize tasks and bring calm to any situation.”
+  </p>
+
+</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 8: CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:1rem;">
+      <div class="section-label">Get in Touch</div>
+      <div class="section-tittlecontact">Let's Work<br>Together</div>
+      <div class="section-subtitle">Available for freelance & long-term partnerships</div>
+      <div class="title-rule"></div>
+    </div>
+    <div class="contact-layout">
+      <div class="reveal">
+        <div class="contact-info-heading">Ready to simplify<br>your <em>workflow</em>?</div>
+        <div class="contact-links">
+          <a href="mailto:mccmendez07@gmail.com?subject=Virtual%20Assistant%20Inquiry" class="contact-link">
+            <div class="contact-link-icon email">✉️</div>
+            <div>
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">mccmendez07@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/maria-claudia-collante-661327398/?locale=es_ES" class="contact-link">
+            <div class="contact-link-icon linkedin">💼</div>
+            <div>
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">María Claudia Collante Méndez</span>
+            </div>
+          </a>
+          <a href="https://www.fiverr.com/mccmendez_07/buying?source=avatar_menu_profile" class="contact-link">
+            <div class="contact-link-icon fiverr">🌿</div>
+            <div>
+              <span class="contact-link-label">Fiverr</span>
+              <span class="contact-link-value">fiverr.com/mccm</span>
+            </div>
+          </a>
+          <a href="https://www.upwork.com/freelancers/~01bc8622538f07888e" class="contact-link">
+            <div class="contact-link-icon upwork">⬆️</div>
+            <div>
+              <span class="contact-link-label">Upwork</span>
+              <span class="contact-link-value">upwork.com/freelancers/mccm</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+       <form
+class="contact-form"
+action="https://formsubmit.co/mccmendez07@gmail.com"
+method="POST">
+<input type="hidden" name="_captcha" value="false">
+
+<input type="hidden" name="_template" value="table">
+
+<input type="hidden" name="_subject" value="New Portfolio Inquiry">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+             <input type="text" class="form-input" name="First Name" placeholder="Alexandra">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" name="Last Name" placeholder="Laurent">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+           <input type="email" class="form-input" name="Email" placeholder="hello@yourcompany.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" name="Subject" placeholder="Virtual Assistant Inquiry">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" name="Message" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn-submit" type="submit"><span>Send Message</span></button>
+      </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MCCM</div>
+  <p class="footer-text">© 2026 María Claudia Collante Méndez · Virtual Assistant · All rights reserved</p>
+</footer>
+ 
+<script>
+  const navbar = document.getElementById("navbar");
+  // CAMBIO AUTOMÁTICO DE COLOR DEL NAVBAR SEGÚN LA SECCIÓN
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  // SECCIONES CLARAS
+if (
+  current === "about" ||
+  current === "tools" ||
+  current === "testimonials"
+) {
+    navbar.classList.add("light-section");
+    navbar.classList.remove("dark-section");
+  }
+
+  // SECCIONES OSCURAS
+  else {
+    navbar.classList.add("dark-section");
+    navbar.classList.remove("light-section");
+  }
+});
+
+  
+ 
+  // HAMBURGER MENU
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+ 
+  // REVEAL ON SCROLL
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+ 
+  // LANGUAGE BARS ANIMATION
+  const langFills = document.querySelectorAll('.lang-fill');
+  const langObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        langFills.forEach((fill, i) => {
+          const w = parseFloat(fill.dataset.width);
+          setTimeout(() => {
+            fill.style.transform = `scaleX(${w})`;
+            fill.classList.add('animated');
+          }, i * 180);
+        });
+        langObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const langSection = document.getElementById('languages');
+  if (langSection) langObserver.observe(langSection);
+ 
+  // SMOOTH ANCHOR SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
+ 
